@@ -1,10 +1,25 @@
 import { Link } from 'react-router-dom'
+import {auth} from '../config/firebase'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import {signOut} from 'firebase/auth'
 export const NavBar = () => {
-    return <div style={{
-        backgroundColor: "#d3d3d3",
-        height: "2rem", display: 'flex', justifyContent: "space-around"
-    }}>
-        <Link to="/">Home</Link>
-        <Link to="/login">Login</Link>
+    const [user] = useAuthState(auth);
+    const SignOutAccount = async () => {
+        await signOut(auth);
+    }
+    return <div className = 'navbar'>
+        <div className='links'>
+            <Link to="/">Home</Link>
+            <Link to="/login">Login</Link>
+        </div>
+        <div className='user'>
+            {user && (
+            <>
+                <img src = {user?.photoURL || ""} width="20" height="20"/>
+                <p>{user?.displayName}</p>
+                <button onClick = {SignOutAccount}>Log out</button>
+            </>
+            )}
+        </div>
     </div>
 }
