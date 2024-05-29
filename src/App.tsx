@@ -4,6 +4,7 @@ import './App.css';
 import {Home} from './pages/Home'
 import {Login} from './pages/Login'
 import { NavBar } from './component/NavBar';
+import { CreatePost } from './pages/create-post/create-post';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path = "/" element = {<Home />}></Route>
           <Route path = "/login" element = {<Login />} />
+          <Route path = "/createpost" element = {<CreatePost />} />
         </Routes>
       </Router>
     </div>
