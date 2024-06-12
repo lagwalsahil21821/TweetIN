@@ -19,6 +19,7 @@ export const CreateForm = () => {
     })
 
     const postRef = collection(db, "posts")
+    
     const {register, handleSubmit, formState: {errors}} = useForm({
         resolver: yupResolver(schema),
     })
@@ -28,7 +29,7 @@ export const CreateForm = () => {
         await addDoc(postRef, {
             ...data,    // title: data.title, description: data.description
             username: user?.displayName,
-            id: user?.uid
+            userId: user?.uid
         })
         navigate("/");
     }

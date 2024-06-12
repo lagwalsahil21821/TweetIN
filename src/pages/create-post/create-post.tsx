@@ -1,7 +1,7 @@
 import {CreateForm} from './create-form';
 export const CreatePost = () => {
     return (
-        <div>
+        <div className = "createPost">
             <CreateForm />
         </div>
     )
